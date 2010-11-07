@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title id='title'>viewPort</title>
+ 
+        <link rel="stylesheet" type="text/css" href="javascripts/ext-3.3.0/resources/css/ext-all.css" />
+        <script type="text/javascript" src="javascripts/ext-3.3.0/adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="javascripts/ext-3.3.0/ext-all-debug.js"></script>
+ 
+        <script type="text/javascript">
+          Ext.onReady(function(){
+
+              var form = new Ext.FormPanel({
+                  renderTo:'panel-target',
+                  height:450,
+                  width: 700,
+                  title:'検索条件',
+                  layout: 'table',
+                  collapsible: true,
+
+                  layoutConfig: {
+                    columns: 2 
+                  },
+
+                  bodyStyle: {
+                    padding: '0px'
+                  },
+
+                  defaults: {
+                    layout: 'form',
+                    xtype: 'fieldset'
+                  },
+
+                  items: [{
+                    width: 350,
+                    items: [{
+                      xtype: 'compositefield',
+                      fieldLabel: '得意先コード',
+                      items: [{
+                        xtype: 'textfield',
+                        name: 'tokuisakiCode',
+                        value: '12345'
+                      },
+                      {
+                        xtype: 'displayfield',
+                        value: '得意先A'
+                      }]
+                    }]
+                  },
+
+                  {
+                    width: 350,
+                    items: [{
+                      xtype: 'compositefield',
+                      fieldLabel: '仕入先コード',
+                      items: [{
+                        xtype: 'textfield',
+                        name: 'shiireSakiCode',
+                        value: '67890'
+                      },
+                      {
+                        xtype: 'displayfield',
+                        value: '仕入先B'
+                      }]
+                    }]
+                  },
+
+                  {
+                    items: [{
+                      xtype: 'datefield',
+                      fieldLabel: '仕入日付',
+                      name: 'shiireHiduke'
+                    }]      
+                  },
+
+                  {
+                    rowspan: 2,
+                    items: [{
+                      xtype: 'textarea',
+                      fieldLabel: '備考',
+                      name: 'biko'
+                    }]
+                  },
+
+                  {
+                    items: [{
+                      xtype: 'timefield',
+                      fieldLabel: '仕入時刻',
+                      name: 'shiireJikoku',
+                      width: 100
+                    }]
+                  },
+
+ 
+                  {
+                    colspan: 2,
+                    items: [{
+                      xtype: 'fieldset',
+                      title: 'fieldset1',
+                      items:[{ 
+                        xtype: 'checkboxgroup',
+                        fieldLabel: 'チェックボックスグループ',
+                        items: [
+                          {boxLabel: 'チェック1', name: 'check1'},
+                          {boxLabel: 'チェック2', name: 'check2'},
+                          {boxLabel: 'チェック3', name: 'check3'}
+                        ]
+                      }] 
+                    }]
+                  },
+
+                  {
+                    colspan: 2,
+                    items: [{
+                      xtype: 'fieldset',
+                      title: 'fieldset2',
+                      items: [{
+                        xtype: 'radiogroup',
+                        fieldLabel: 'ラジオボタングループ',
+                        items: [
+                          {boxLabel: 'ラジオ1', name: 'radio1'},
+                          {boxLabel: 'ラジオ2', name: 'radio2'},
+                          {boxLabel: 'ラジオ3', name: 'radio3'}
+                        ]
+                      }]
+                    }]
+                  }],
+                  
+                  buttons: [{
+                    text: '検索',
+                    handler: function(){
+                      Ext.iterate(form.getForm().getValues(), function(key, val, arr){
+                        alert(key+':'+val);  
+                      }); 
+                    }
+                  },
+                  {
+                    text: 'クリア'
+                  }]
+
+              });
+            });
+          </script>
+      </head>
+      <body>
+        <div id="panel-target"></div>
+      </body>
+  </html>

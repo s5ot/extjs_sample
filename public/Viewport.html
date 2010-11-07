@@ -1,0 +1,194 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title id='title'>viewPort</title>
+ 
+        <!--
+        <link rel="stylesheet" type="text/css" href="javascripts/ext-3.3.0/resources/css/ext-all.css" />
+        -->
+        <link rel="stylesheet" type="text/css" href="javascripts/ext-3.3.0/resources/css/ext-all-notheme.css" />
+        <link rel="stylesheet" type="text/css" href="javascripts/ext-3.3.0/resources/css/xtheme-gray.css" />
+        <script type="text/javascript" src="javascripts/ext-3.3.0/adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="javascripts/ext-3.3.0/ext-all-debug.js"></script>
+ 
+        <script type="text/javascript">
+          Ext.onReady(function(){
+
+            new Ext.Viewport({
+                layout:'border',
+                hideLabel: true, 
+                hideBorders: true, 
+                
+                defaults: {
+                    collapsible: true,
+                    split: true,
+                    bodyStyle: 'padding:0px',
+                    margins: '0, 0, 0, 0'
+                },
+
+                items: [{
+                    title: 'ヘッダー',
+                    region:'north',
+                    height: 100,
+                    header: true
+                },{
+                    title: 'メイン',
+                    region:'center',
+                    collapsible: false,
+                    autoScroll: true,
+                    id: 'myForm',
+                    bodyStyle: 'padding:5px',
+                    layout: 'column',
+
+                    defaults: {
+                      columnWidth:.3,
+                      border: false
+                    },
+
+                    items: [{
+                      layout: 'form',
+                      items: [{
+                        xtype: 'textfield',
+                        fieldLabel: 'テキストフィールド'
+                      },
+
+                      {
+                        xtype: 'displayfield',
+                        fieldLabel: '表示フィールド',
+                        value: '表示だけです'
+                      },
+
+                      {
+                        xtype: 'combo',
+                        fieldLabel: 'コンボボックス',
+                        displayField: 'name',
+                        valueField: 'code',
+                        allowBlank: false, 
+                        editable: false, 
+                        typeAhead: true, 
+                        mode: "local",  
+                        forceSelection: true, 
+                        triggerAction: "all", 
+                        selectOnFocus: true,
+                        store: {
+                          xtype: 'simplestore',
+                          fields: ['code', 'name'],
+                          data: [ ['1', 'バナナ'], ['2', 'リンゴ'], ['3', 'みかん'] ]
+                        }
+                      },
+
+                      {
+                        xtype: 'datefield',
+                        fieldLabel: '日付フィールド'
+                      },
+
+                      {
+                        xtype: 'timefield',
+                        fieldLabel: '時刻フィールド'
+                      },
+
+                      {
+                        xtype: 'numberfield',
+                        fieldLabel: '数値フィールド'
+                      },
+
+                      {
+                        xtype: 'textarea',
+                        fieldLabel: 'テキストエリア'
+                      }]
+                    },
+                
+                    {
+                      layout: 'form',
+                      items: [ 
+                      {
+                        xtype: 'checkbox',
+                        boxLabel: 'チェックボックス'
+                      },
+
+                      {
+                        xtype: 'radio',
+                        boxLabel: 'ラジオボタンA',
+                        name: 'radiosample'
+                      },
+
+                      {
+                        xtype: 'radio',
+                        boxLabel: 'ラジオボタンB',
+                        name: 'radiosample'
+                      },
+
+                      {
+                        xtype: 'fieldset',
+                        title: 'チェックボックスグループ',
+                        layout: 'form',
+                        collapsible: true,
+                        items: [
+                        {
+                          xtype: 'checkboxgroup',
+                          boxLabel: 'チェックボックスグループ',
+                          items: [
+                            {boxLabel: 'チェック1', name: 'check1'},
+                            {boxLabel: 'チェック2', name: 'check2'},
+                            {boxLabel: 'チェック3', name: 'check3'}
+                          ]
+                        }]
+                      },
+
+                      {
+                        xtype: 'fieldset',
+                        title: 'ラジオボタングループ',
+                        layout: 'form',
+                        collapsible: true,
+                        items: [
+                        {
+                          xtype: 'radiogroup',
+                          boxLabel: 'ラジオボタングループ',
+                          items: [
+                            {boxLabel: 'ラジオ1', name: 'radiogroupsample'},
+                            {boxLabel: 'ラジオ2', name: 'radiogroupsample'},
+                            {boxLabel: 'ラジオ3', name: 'radiogroupsample'}
+                          ]
+                        }]
+                      }]
+                    },
+
+                    {
+                      layout: 'form',
+                      columnWidth:.4,
+                      items: [{
+                        xtype: 'trigger',
+                        fieldLabel: 'トリガーフィールド',
+                        onTriggerClick: function(){alert('トリガー発動しました')}
+                      },
+
+                      {
+                        xtype: 'htmleditor',
+                        fieldLabel: 'HTMLエディタ'
+                      }]
+                    }
+                    ],
+                    
+                    buttons: [
+                      {text: '検索'},
+                      {text: 'クリア'}
+                    ]
+
+                },{
+                    region:'south',
+                    title: 'フッター',
+                    height: 100,
+                    collapsed: true
+                }]
+              });
+
+            var myForm = Ext.getCmp('myForm');
+            
+            myForm.addButton('Load', function(){});
+
+            });
+          </script>
+      </head>
+      <body>
+      </body>
+  </html>
